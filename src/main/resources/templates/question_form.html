@@ -1,0 +1,28 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container">
+
+    <!--질문 등록 페이지임을 나타내는 텍스트 -->
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+
+    <!-- 질문 등록 폼. 폼이 제출되면 /question/create URL로 POST 요청 보냄 -->
+    <form th:action="@{/question/create}" th:object="${questionForm}" method="post">
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+
+        <!-- 제목 입력 부분 -->
+        <div class="mb-3">
+            <label for="subject" class="form-label">제목</label>
+            <input type="text" th:field="*{subject}" class="form-control">
+        </div>
+
+        <!-- 내용 입력 부분 -->
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea th:field="*{content}" class="form-control" rows="10"></textarea>
+        </div>
+
+        <!-- 입력한 질문 저장 버튼. 폼 제출 -->
+        <input type="submit" value="저장하기" class="btn btn-primary my-2">
+
+    </form>
+</div>
+</html>
